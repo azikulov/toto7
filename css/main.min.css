@@ -2228,7 +2228,7 @@ input[type="checkbox"]:focus ~ .checkmark {
 
   .table thead tr th {
     padding: 1vw 1.5vw;
-    font-size: 1.923vw;
+    font-size: 3.4666666667vw;
   }
 
   .table-search__icon,
@@ -2243,17 +2243,67 @@ input[type="checkbox"]:focus ~ .checkmark {
   }
 }
 
-/* #users:target */
+.table-bottom-button {
+  color: #2099ff;
+  font-weight: 600;
+  margin: 1rem 0;
+}
 
-#users,
-#tickets {
+._active {
+  display: block !important;
+}
+
+.tab-block {
   display: none;
 }
 
-#users:target {
-  display: block;
+.table-header {
+  margin-bottom: 0.75rem;
 }
 
-#tickets:target {
-  display: block !important;
+.table-header__row span {
+  color: #666;
+}
+
+.table-header__row span:nth-child(2) {
+  color: #000;
+  font-weight: 600;
+}
+
+.table-header__row span:nth-child(3) {
+  color: #2099ff;
+  margin-left: 0.5rem;
+}
+
+.table-footer {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+}
+
+.table-footer__row span:nth-child(2) {
+  color: #ff4e20;
+}
+
+.table-footer__row span:nth-child(3) {
+  color: #ffbe20;
+}
+
+.table-footer__row span:nth-child(4) {
+  color: #2099ff;
+}
+
+.table-footer__button {
+  background: #000;
+  color: #fff;
+  padding: 1vw 3.2vw;
+  border-radius: 0.25rem;
+}
+
+@media screen and  (max-width: 768px){
+  .table-footer__button {
+    padding: 3vw 6.2vw;
+
+  }
 }

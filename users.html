@@ -9,6 +9,32 @@
     <title>TOTO7 | Личный кабинет</title>
     <script defer src="js/main.min.js"></script>
     <link href="css/main.min.css" rel="stylesheet" />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let tabs = document.querySelectorAll(".content");
+
+        for (let index = 0; index < tabs.length; index++) {
+          let tab = tabs[index];
+          let tabs_items = tab.querySelectorAll(".content__tab-btn");
+          let tabs_blocks = tab.querySelectorAll(".tab-block");
+          for (let index = 0; index < tabs_items.length; index++) {
+            let tabs_item = tabs_items[index];
+
+            tabs_item.addEventListener("click", function (e) {
+              for (let index = 0; index < tabs_items.length; index++) {
+                let tabs_item = tabs_items[index];
+                tabs_item.classList.remove("_active");
+                tabs_blocks[index].classList.remove("_active");
+              }
+              tabs_item.classList.add("_active");
+              tabs_blocks[index].classList.add("_active");
+              e.preventDefault();
+            });
+          }
+        }
+      });
+    </script>
   </head>
   <body class="isLoading">
     <header class="header">
@@ -50,366 +76,718 @@
     <main>
       <section class="content">
         <div class="content__tabs">
-          <a href="#" class="content__tab-btn" type="button" data-tab="profile">
+          <button class="content__tab-btn" type="button" data-tab="future-circulation">
             Будущий тираж
-          </a>
-          <a href="#" class="content__tab-btn" type="button" data-tab="status">
+          </button>
+          <button class="content__tab-btn" type="button" data-tab="current-circulation">
             Текущий тираж
-          </a>
-          <a href="#" class="content__tab-btn" type="button" data-tab="rates">
+          </button>
+          <button class="content__tab-btn" type="button" data-tab="completed-edition">
             Завершенный тираж
-          </a>
-          <a href="#tickets" class="content__tab-btn" type="button" data-tab="tickets">
+          </button>
+          <button class="content__tab-btn" type="button" data-tab="tickets">
             Билеты
-          </a>
-          <a href="#users" class="content__tab-btn active" type="button" data-tab="users">
+          </button>
+          <button class="content__tab-btn" type="button" data-tab="users">
             Пользователи
-          </a>
+          </button>
         </div>
 
-        <div id="tickets">Билеты</div>
+        <div class="content__tabs-item">
+          <div class="tab-block _active" id="future-circulation">
+            <div class="table-container">
+              <header class="table-header">
+                <div class="table-header__row">
+                  <span>Дата:</span>
+                  <span>20221203</span>
+                </div>
+                <div class="table-header__row">
+                  <span>Время окончания приема:</span>
+                  <span>23:59:59</span>
+                  <span>редактировать</span>
+                </div>
+              </header>
 
-        <div id="users">
-          <div class="table-container">
-            <div class="table-result">Всего: <span> 12 045 </span> пользователей</div>
+              <table class="table">
+                <thead class="table-head">
+                  <tr>
+                    <th>Участник</th>
+                    <th>Участник</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
+                  </tr>
+                </thead>
 
-            <table class="table">
-              <thead class="table-head">
-                <tr>
-                  <th>Фамилия Имя Отчество</th>
-                  <th>Email</th>
-                  <th>Номер телефона</th>
-                  <th>Дата рождения</th>
-                  <th>Регион</th>
-                  <th>Баланс</th>
-                  <th>Статус</th>
-                  <th>
-                    <div class="table-search">
-                      <span class="table-search__icon"
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                          />
-                        </svg>
-                      </span>
-                      <input
-                        type="text"
-                        placeholder="Поиск"
-                        class="table-search__input"
-                      />
-                    </div>
-                  </th>
-                </tr>
-              </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff">редактировать</td>
+                    <td style="color: #2099ff">удалить</td>
+                  </tr>
 
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff">редактировать</td>
+                    <td style="color: #2099ff">удалить</td>
+                  </tr>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff">редактировать</td>
+                    <td style="color: #2099ff">удалить</td>
+                  </tr>
+                </tbody>
+              </table>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+              <button class="table-bottom-button">Добавить событие +</button>
+            </div>
+          </div>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+          <div class="tab-block" id="current-circulation">
+            <div class="table-container">
+              <header class="table-header">
+                <div class="table-header__row">
+                  <span>Дата:</span>
+                  <span>20221203</span>
+                </div>
+                <div class="table-header__row">
+                  <span>Время окончания приема:</span>
+                  <span>23:59:59</span>
+                </div>
+              </header>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+              <table class="table">
+                <thead class="table-head">
+                  <tr>
+                    <th>Участник</th>
+                    <th>Участник</th>
+                  </tr>
+                </thead>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
 
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-6 h-6"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                      />
-                    </svg>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
 
-            <div class="table-pagination">
-              <span> Страница: </span>
-              <span class="table-pagination__left"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </svg>
-              </span>
-              <span class="table-pagination__page">10</span>
-              <span class="table-pagination__right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  />
-                </svg>
-              </span>
-              <span>из</span>
-              <span class="table-pagination__pages">1 204</span>
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-footer">
+                <div class="table-footer__row">
+                  <span> Количество проданных билетов: </span>
+                  <span> 1500</span>/<span>100</span>/<span>10</span>
+                </div>
+
+                <div class="table-footer__row">
+                  <span> Общая сумма ставок: </span> <span>75 000 р.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-block" id="completed-edition">
+            <div class="table-container">
+              <header class="table-header">
+                <div class="table-header__row">
+                  <span>Дата:</span>
+                  <span>20221203</span>
+                </div>
+                <div class="table-header__row">
+                  <span>Время окончания приема:</span>
+                  <span>23:59:59</span>
+                </div>
+              </header>
+
+              <table class="table">
+                <thead class="table-head">
+                  <tr>
+                    <th>Участник</th>
+                    <th>Участник</th>
+                    <th>Результат</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  
+                  <tr>
+                    <td style="font-weight: 600; color: #ff4e20">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff;">1:0</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600; ">К.М.Грегор</td>
+                    <td style="font-weight: 600;color: #ff4e20">Хабиб Нурмагометов</td>
+                    <td style="color: #2099ff;">20:34</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600; ">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff;">ввести</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600; ">К.М.Грегор</td>
+                    <td style="font-weight: 600;">Хабиб Нурмагометов</td>
+                    <td style="color: #2099ff;">ввести</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600;">Ливерпуль</td>
+                    <td style="font-weight: 600">Манчестер Юнайтед</td>
+                    <td style="color: #2099ff;">ввести</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-weight: 600; ">К.М.Грегор</td>
+                    <td style="font-weight: 600;">Хабиб Нурмагометов</td>
+                    <td style="color: #2099ff;">ввести</td>
+                    <td style="color: #2099ff;">редактировать</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-footer">
+                <div class="table-footer__row">
+                  <span> Количество проданных билетов: </span>
+                  <span> 1500</span>/<span>100</span>/<span>10</span>
+                </div>
+
+                <div class="table-footer__row">
+                  <span> Общая сумма ставок: </span> <span>75 000 р.</span>
+                </div>
+
+                <div class="table-footer__row">
+                  <span> Количество выигравших билетов: </span>
+                  <span>5</span>/<span>1</span>/<span>0</span>
+                </div>
+
+                <div class="table-footer__row">
+                  <span> Общая сумма выиграша: </span> <span>140 000 р.</span>
+                </div>
+
+                <div class="table-footer__row">
+                  <button class="table-footer__button">Опубликовать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-block" id="tickets">
+            <div class="table-container">
+              <table class="table">
+                <thead class="table-head">
+                  <tr>
+                    <th>Название</th>
+                    <th>Стоимость</th>
+                    <th>Выиграш</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Бронзовый</td>
+                    <td>100</td>
+                    <td>15 000</td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                        />
+                      </svg>
+                    </td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Бронзовый</td>
+                    <td>100</td>
+                    <td>15 000</td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                        />
+                      </svg>
+                    </td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Бронзовый</td>
+                    <td>100</td>
+                    <td>15 000</td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                        />
+                      </svg>
+                    </td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="table-bottom-button">Добавить билет +</button>
+            </div>
+          </div>
+          <div class="tab-block" id="users">
+            <div class="table-container">
+              <div class="table-result">Всего: <span> 12 045 </span> пользователей</div>
+
+              <table class="table">
+                <thead class="table-head">
+                  <tr>
+                    <th>Фамилия Имя Отчество</th>
+                    <th>Email</th>
+                    <th>Номер телефона</th>
+                    <th>Дата рождения</th>
+                    <th>Регион</th>
+                    <th>Баланс</th>
+                    <th>Статус</th>
+                    <th>
+                      <div class="table-search">
+                        <span class="table-search__icon"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                            />
+                          </svg>
+                        </span>
+                        <input
+                          type="text"
+                          placeholder="Поиск"
+                          class="table-search__input"
+                        />
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                      </svg>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-pagination">
+                <span> Страница: </span>
+                <span class="table-pagination__left"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </span>
+                <span class="table-pagination__page">10</span>
+                <span class="table-pagination__right">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </span>
+                <span>из</span>
+                <span class="table-pagination__pages">1 204</span>
+              </div>
             </div>
           </div>
         </div>

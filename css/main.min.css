@@ -2125,7 +2125,7 @@ input[type="checkbox"]:focus ~ .checkmark {
 
 .table thead tr th {
   background: #d9d9d9;
-  padding: 0.52vw 1.48vw;
+  padding: 1vw 3vw;
 }
 
 .table-search {
@@ -2227,8 +2227,12 @@ input[type="checkbox"]:focus ~ .checkmark {
   }
 
   .table thead tr th {
-    padding: 1vw 1.5vw;
+    padding: 2vw 2.5vw;
     font-size: 3.4666666667vw;
+  }
+
+  .table tr td {
+    padding: 2vw 2.5vw !important;
   }
 
   .table-search__icon,
@@ -2259,6 +2263,9 @@ input[type="checkbox"]:focus ~ .checkmark {
 
 .table-header {
   margin-bottom: 0.75rem;
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
 }
 
 .table-header__row span {
@@ -2279,7 +2286,7 @@ input[type="checkbox"]:focus ~ .checkmark {
   margin-top: 0.75rem;
   display: flex;
   flex-flow: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .table-footer__row span:nth-child(2) {
@@ -2301,9 +2308,16 @@ input[type="checkbox"]:focus ~ .checkmark {
   border-radius: 0.25rem;
 }
 
-@media screen and  (max-width: 768px){
+@media screen and (max-width: 768px) {
   .table-footer__button {
     padding: 3vw 6.2vw;
-
   }
+}
+
+.tab-block {
+  margin-bottom: 2rem;
+}
+
+.header__navigation {
+  z-index: 99;
 }

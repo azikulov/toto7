@@ -2242,3 +2242,18 @@ input[type="checkbox"]:focus ~ .checkmark {
     height: 3.2vw;
   }
 }
+
+/* #users:target */
+
+#users,
+#tickets {
+  display: none;
+}
+
+#users:target {
+  display: block;
+}
+
+#tickets:target {
+  display: block !important;
+}

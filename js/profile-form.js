@@ -5,14 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editButtons.forEach((editButton) => {
     editButton.addEventListener("click", (event) => {
-      console.log(event.target.previousElementSibling.disabled);
-      
       if (event.target.textContent === "Сохранить") {
         event.target.previousElementSibling.disabled = true;
         event.target.textContent = "изменить";
+        event.target.type = "submit";
       } else {
         event.target.previousElementSibling.disabled = false;
+        event.target.previousElementSibling.focus();
         event.target.textContent = "Сохранить";
+        event.target.type = "button";
       }
     });
   });

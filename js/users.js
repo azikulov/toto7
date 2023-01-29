@@ -54,4 +54,36 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const ticketsEditButtons = document.querySelectorAll(
+    ".form-tickets tbody tr td:nth-child(4) button"
+  );
+
+  ticketsEditButtons.forEach((editButton) => {
+    editButton.addEventListener("click", (event) => {
+      let firstInput =
+        event.target.parentElement.parentElement.previousElementSibling
+          .previousElementSibling.firstElementChild;
+      let secondInput =
+        event.target.parentElement.parentElement.previousElementSibling
+          .previousElementSibling.previousElementSibling.firstElementChild;
+      let thirdInput =
+        event.target.parentElement.parentElement.previousElementSibling.firstElementChild;
+
+      if (event.target.type == "button") {
+        console.log("click submit");
+        firstInput.disabled = true;
+        secondInput.disabled = true;
+        thirdInput.disabled = true;
+        event.target.type = "submit";
+      } else {
+        console.log("click button");
+        firstInput.disabled = false;
+        secondInput.disabled = false;
+        thirdInput.disabled = false;
+        firstInput.focus();
+        event.target.type = "button";
+      }
+    });
+  });
 });

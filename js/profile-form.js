@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const profileForm = document.getElementById("profile-form");
-  const formInputs = document.getElementById("profile__data");
   const editButtons = profileForm.querySelectorAll(".profile__edit-btn");
 
   editButtons.forEach((editButton) => {
@@ -16,5 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
         event.target.type = "button";
       }
     });
+  });
+
+  const allEditButton = document.querySelector(".profile__edit");
+
+  allEditButton.addEventListener("click", (event) => {
+    if (event.target.textContent === "Сохранить") {
+      profileForm.querySelectorAll("input.profile__data").forEach((profileData) => {
+        profileData.disabled = true;
+      });
+
+      event.target.textContent = "Редактировать";
+      event.target.type = "submit";
+    } else {
+      profileForm.querySelectorAll("input.profile__data").forEach((profileData) => {
+        profileData.disabled = false;
+      });
+
+      event.target.textContent = "Сохранить";
+      event.target.type = "button";
+    }
   });
 });

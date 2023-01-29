@@ -32,22 +32,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   commpletedEditionEditButtons.forEach((editButton) => {
     editButton.addEventListener("click", (event) => {
-      let target = event.target;
       let firstInput =
-        target.parentElement.previousElementSibling.previousElementSibling
+        event.target.parentElement.previousElementSibling.previousElementSibling
           .firstElementChild;
       let secondInput =
-        target.parentElement.previousElementSibling.previousElementSibling
+        event.target.parentElement.previousElementSibling.previousElementSibling
           .previousElementSibling.firstElementChild;
+      let thirdInput =
+        event.target.parentElement.previousElementSibling.firstElementChild;
 
       if (event.target.textContent === "Сохранить") {
         firstInput.disabled = true;
         secondInput.disabled = true;
+        thirdInput.disabled = true;
         event.target.textContent = "редактировать";
         event.target.type = "submit";
       } else {
         firstInput.disabled = false;
         secondInput.disabled = false;
+        thirdInput.disabled = false;
         firstInput.focus();
         event.target.textContent = "Сохранить";
         event.target.type = "button";

@@ -2160,10 +2160,14 @@ input[type="checkbox"]:focus ~ .checkmark {
   font-weight: 400;
 }
 
+.table tbody tr {
+  border-bottom: 0.093vw solid #676;
+}
+
 .table tbody tr td {
   padding: 0.6vw 1.48vw;
   text-align: center;
-  border-bottom: 0.093vw solid #676;
+  /* border-bottom: 0.093vw solid #676; */
 }
 
 .table tbody tr td svg {
@@ -2207,6 +2211,10 @@ input[type="checkbox"]:focus ~ .checkmark {
 }
 
 @media screen and (max-width: 768px) {
+  #future-circulation-time {
+    width: 16% !important;
+  }
+
   .table-pagination__right svg,
   .table-pagination__left svg {
     color: #2099ff !important;

@@ -104,19 +104,43 @@
         <div class="content__tabs-item">
           <div class="tab-block _active" id="future-circulation">
             <div class="table-container">
-              <header class="table-header">
-                <div class="table-header__row">
-                  <span>Дата:</span>
-                  <span>20221203</span>
-                </div>
-                <div class="table-header__row">
-                  <span>Время окончания приема:</span>
-                  <span>23:59:59</span>
-                  <span style="cursor: pointer">редактировать</span>
-                </div>
-              </header>
-
               <form action="">
+                <header class="table-header">
+                  <div class="table-header__row">
+                    <span>Дата:</span>
+                    <span>
+                      <input
+                        type="text"
+                        id="future-circulation-date"
+                        value="20221203"
+                        style="color: #000; font-weight: 600"
+                        disabled
+                      />
+                    </span>
+                  </div>
+                  <div class="table-header__row">
+                    <span>Время окончания приема:</span>
+                    <span>
+                      <input
+                        type="text"
+                        id="future-circulation-time"
+                        style="color: #000; font-weight: 600; width: 5%"
+                        value="23:59:59"
+                        disabled
+                      />
+                    </span>
+                    <span>
+                      <button
+                        type="button"
+                        id="future-circulation-button"
+                        class="table-header__edit-btn"
+                      >
+                        редактировать
+                      </button>
+                    </span>
+                  </div>
+                </header>
+
                 <table class="table">
                   <thead class="table-head">
                     <tr>
@@ -204,9 +228,9 @@
                     </tr>
                   </tbody>
                 </table>
-              </form>
 
-              <button class="table-bottom-button">Добавить событие +</button>
+                <button class="table-bottom-button">Добавить событие +</button>
+              </form>
             </div>
           </div>
 
@@ -316,6 +340,7 @@
                           disabled="true"
                         />
                       </td>
+
                       <td>
                         <input
                           type="text"
@@ -324,6 +349,7 @@
                           disabled="true"
                         />
                       </td>
+
                       <td>
                         <input
                           type="text"
@@ -569,8 +595,8 @@
                       <th>Название</th>
                       <th>Стоимость</th>
                       <th>Выиграш</th>
-                      <th></th>
-                      <th></th>
+                      <th><span style="opacity: 0">edit</span></th>
+                      <th><span style="opacity: 0">delete</span></th>
                     </tr>
                   </thead>
 
@@ -602,7 +628,7 @@
                       </td>
 
                       <td style="display: grid; place-items: center">
-                        <button type="button">
+                        <button type="submit">
                           <svg
                             width="19"
                             height="19"
@@ -660,7 +686,7 @@
                         />
                       </td>
                       <td style="display: grid; place-items: center">
-                        <button type="button">
+                        <button type="submit">
                           <svg
                             width="19"
                             height="19"
@@ -718,7 +744,7 @@
                         />
                       </td>
                       <td style="display: grid; place-items: center">
-                        <button type="button">
+                        <button type="submit">
                           <svg
                             width="19"
                             height="19"

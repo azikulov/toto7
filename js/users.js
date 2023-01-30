@@ -30,6 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
     "#form-completed-edition tbody tr td:nth-child(4)"
   );
 
+  const futureCirculationDate = document.getElementById("future-circulation-date");
+  const futureCirculationTime = document.getElementById("future-circulation-time");
+  const futureCirculationButton = document.getElementById("future-circulation-button");
+
+  futureCirculationButton.addEventListener("click", () => {
+    if (futureCirculationButton.textContent == "Сохранить") {
+      futureCirculationDate.disabled = true;
+      futureCirculationTime.disabled = true;
+      futureCirculationButton.textContent = "редактировать";
+      futureCirculationButton.type = "submit";
+      return;
+    }
+    futureCirculationDate.disabled = false;
+    futureCirculationTime.disabled = false;
+    futureCirculationTime.focus();
+
+    futureCirculationButton.textContent = "Сохранить";
+    futureCirculationButton.type = "button";
+  });
+
   commpletedEditionEditButtons.forEach((editButton) => {
     editButton.addEventListener("click", (event) => {
       let firstInput =
@@ -63,30 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   ticketsEditButtons.forEach((editButton) => {
-    editButton.addEventListener("click", (event) => {
+    editButton.addEventListener("click", () => {
       let firstInput =
-        event.target.parentElement.parentElement.previousElementSibling
-          .previousElementSibling.firstElementChild;
+        editButton.parentElement.previousElementSibling.previousElementSibling
+          .firstElementChild;
       let secondInput =
-        event.target.parentElement.parentElement.previousElementSibling
-          .previousElementSibling.previousElementSibling.firstElementChild;
-      let thirdInput =
-        event.target.parentElement.parentElement.previousElementSibling.firstElementChild;
+        editButton.parentElement.previousElementSibling.previousElementSibling
+          .previousElementSibling.firstElementChild;
+      let thirdInput = editButton.parentElement.previousElementSibling.firstElementChild;
 
-      if (event.target.type == "button") {
-        console.log("click submit");
+      if (editButton.type == "button") {
         firstInput.disabled = true;
         secondInput.disabled = true;
         thirdInput.disabled = true;
-        event.target.type = "submit";
-      } else {
-        console.log("click button");
-        firstInput.disabled = false;
-        secondInput.disabled = false;
-        thirdInput.disabled = false;
-        firstInput.focus();
-        event.target.type = "button";
+        editButton.setAttribute("type", "submit");
+        return;
       }
+      firstInput.disabled = false;
+      secondInput.disabled = false;
+      thirdInput.disabled = false;
+      firstInput.focus();
+      editButton.setAttribute("type", "button");
     });
   });
 });
